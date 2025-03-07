@@ -69,7 +69,9 @@ public class MainActivityTest {
     }
 
     @Test
-    public void addMovieShouldAddValidMovieToMovieList() {
+    public void addMovieShouldAddValidMovieToMovieList() throws InterruptedException {
+
+        Thread.sleep(5000);
         // Click on button to open addMovie dialog
         onView(withId(R.id.buttonAddMovie)).perform(click());
 
@@ -86,8 +88,9 @@ public class MainActivityTest {
     }
 
     @Test
-    public void addMovieShouldShowErrorForInvalidMovieName() {
+    public void addMovieShouldShowErrorForInvalidMovieName() throws InterruptedException {
         // Click on button to open addMovie dialog
+        Thread.sleep(3000);
         onView(withId(R.id.buttonAddMovie)).perform(click());
 
         // Add movie details, but no title
@@ -102,7 +105,9 @@ public class MainActivityTest {
     }
 
     @Test
-    public void appShouldDisplayExistingMoviesOnLaunch() {
+    public void appShouldDisplayExistingMoviesOnLaunch() throws InterruptedException {
+
+        Thread.sleep(3000);
         // Check that the initial data is loaded
         onView(withText("Oppenheimer")).check(matches(isDisplayed()));
         onView(withText("Barbie")).check(matches(isDisplayed()));
@@ -128,7 +133,7 @@ public class MainActivityTest {
 
     @After
     public void tearDown() {
-        String projectId = "YOUR-PROJECT-ID";
+        String projectId = "lab08-thursday-demo";
         URL url = null;
         try {
             url = new URL("http://10.0.2.2:8080/emulator/v1/projects/" + projectId + "/databases/(default)/documents");
